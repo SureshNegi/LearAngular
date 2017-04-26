@@ -1,24 +1,24 @@
 define(['js/app'], function (F1FeederApp) {
    
   ///* Drivers controller */
-  //F1FeederApp.controller('driversController', function ($scope, ergastAPIservice, $state) {
-  //  $scope.nameFilter = null;
-  //  $scope.driversList = [];
-  //  $scope.searchFilter = function (driver) {
-  //      var re = new RegExp($scope.nameFilter, 'i');
-  //      return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
-  //  };
+  F1FeederApp.controller('driversController', function ($scope, ergastAPIservice, $state) {
+    $scope.nameFilter = null;
+    $scope.driversList = [];
+    $scope.searchFilter = function (driver) {
+        var re = new RegExp($scope.nameFilter, 'i');
+        return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
+    };
     
-  //  $scope.loadDriver = function (id) {
-  //      $state.go('driver', {
-  //          "driverId": id
-  //      });
-  //  }
-  //  ergastAPIservice.getDrivers().success(function (response) {
-  //      //Digging into the response to get the relevant data
-  //      $scope.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-  //  });
-  //}).
+    $scope.loadDriver = function (id) {
+        $state.go('driver', {
+            "driverId": id
+        });
+    }
+    ergastAPIservice.getDrivers().success(function (response) {
+        //Digging into the response to get the relevant data
+        $scope.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    });
+  }).
 
   ///* Driver controller */
   //controller('driverController', function ($scope, $routeParams, ergastAPIservice, $rootScope, $state) {
@@ -35,7 +35,7 @@ define(['js/app'], function (F1FeederApp) {
   //  }); 
   //}).
 
-    F1FeederApp.controller('loginController', function ($state, $scope, $routeParams, $location) {
+   controller('loginController', function ($state, $scope, $routeParams, $location) {
         $scope.id = $routeParams.id;
         $scope.races = [];
         $scope.driver = null;
