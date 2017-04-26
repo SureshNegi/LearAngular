@@ -1,5 +1,6 @@
 //var app = angular.module('F1FeederApp', ['ui.router', 'F1FeederApp.services', 'F1FeederApp.controllers']);
-var app = angular.module('F1FeederApp', ['ui.router', 'ngRoute', 'F1FeederApp.services', 'F1FeederApp.controllers']);
+define(['angular', 'ngRoute', 'uiRouter'], function (angular) {
+    var app = angular.module('F1FeederApp', ['ui.router','ngRoute']);
 //config(['$routeProvider', function($routeProvider) {
 //  $routeProvider.
 //	when("/drivers", {templateUrl: "partials/drivers.html", controller: "driversController"}).
@@ -20,11 +21,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/drivers',
             templateUrl: 'partials/drivers.html'
         })
+       .state('driver', {
+           url: '/driver/:id',
+           templateUrl: 'partials/driver.html',
+               params: {
+        driverId: null
+               
+
+               },
+    })
     //$stateProvider.state(home);
     // if none of the above states are matched, use this as the fallback
    // $urlRouterProvider.otherwise("/login");
 
 })
-//.run(['$state', function ($state) {
+
+app.init = function () {
+    console.log('app.init called');
+    angular.bootstrap(document, ['F1FeederApp']);
+};
+
+return app;
+    //.run(['$state', function ($state) {
 //    $state.transitionTo('login');
 //}])
+});
