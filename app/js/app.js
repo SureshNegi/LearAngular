@@ -1,6 +1,6 @@
 //var app = angular.module('F1FeederApp', ['ui.router', 'F1FeederApp.services', 'F1FeederApp.controllers']);
-define(['angular', 'ngRoute', 'uiRouter'], function (angular) {
-    var app = angular.module('F1FeederApp', ['ui.router','ngRoute']);
+define(['angular', 'ngRoute', 'uiRouter','js/services'], function (angular) {
+    var app = angular.module('F1FeederApp', ['ui.router','ngRoute','F1FeederApp.services']);
 //config(['$routeProvider', function($routeProvider) {
 //  $routeProvider.
 //	when("/drivers", {templateUrl: "partials/drivers.html", controller: "driversController"}).
